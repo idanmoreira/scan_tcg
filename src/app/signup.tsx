@@ -4,19 +4,19 @@ import { Image, StyleSheet, Text, View, ScrollView, KeyboardAvoidingView, Platfo
 import { Button } from "@/components/Button"
 import { Input } from "@/components/Input"
 
-export default function Index() {
+export default function SignUp() {
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.select({ ios: 'padding', android: "height" })}>
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled">
     <View style={styles.container}>
       <Image 
-        source={require("@/assets/img1.png")}
+        source={require("@/assets/img2.png")}
         style={styles.illustration}
       />
       
-      <Text style={styles.title}>Entrar</Text>
+      <Text style={styles.title}>Cadastrar</Text>
       <Text style={styles.subtitle}>
-        Acessar agora com e-mail e senha.
+        Crie sua conta para começar a scanear suas cartas.
       </Text>
 
     <View style={styles.form}>
