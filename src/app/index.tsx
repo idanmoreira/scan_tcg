@@ -1,13 +1,29 @@
+import { useState } from "react" 
 import { Link } from "expo-router"
-import { Image, StyleSheet, Text, View, ScrollView, KeyboardAvoidingView, Platform } from "react-native"
+import { Image, StyleSheet, Text, View, ScrollView, KeyboardAvoidingView, Alert, Platform } from "react-native"
 
 import { Button } from "@/components/Button"
 import { Input } from "@/components/Input"
 
 export default function Index() {
+const [email, setEmail] = useState("")
+const [password, setPassword] = useState("")
+
+function handleLogin() {
+if(!email.trim() || !password.trim()) {
+  return Alert.alert("Entrar", "Preencha todos os campos.")
+}
+
+Alert.alert("Bem vindo", `Login realizado com ${email}`)
+ 
+}
+
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.select({ ios: 'padding', android: "height" })}>
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled">
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled"
+    showVerticalScrollIndicator={false}
+    >
+    
     <View style={styles.container}>
       <Image 
         source={require("@/assets/img1.png")}
@@ -20,9 +36,19 @@ export default function Index() {
       </Text>
 
     <View style={styles.form}>
-      <Input placeholder="E-mail" keyboardType="email-address"/>
-      <Input placeholder="Senha" secureTextEntry/>
-      <Button label="Entrar"/>
+      <Input 
+      placeholder="E-mail" 
+      keyboardType="email-address"
+      onChangeText={setEmail}
+      />
+
+      <Input 
+      placeholder="Senha" 
+      secureTextEntry 
+      onChangeText={setPassword}
+      />
+
+      <Button label="Entrar" onPress={handleLogin} />
     </View>
 
     <Text style={styles.footerText}>
